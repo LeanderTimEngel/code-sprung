@@ -1,27 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Base colors for light mode */
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  
+  --card: 0 0% 98%;
+  --card-foreground: 0 0% 3.9%;
+  
+  --popover: 0 0% 98%;
+  --popover-foreground: 0 0% 3.9%;
+  
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+
+  --radius: 0.5rem;
+
+  /* Syntax highlighting colors */
+  --syntax-c: 187 84% 64%;
+  --syntax-python: 287 59% 66%;
+  --syntax-javascript: 39 77% 69%;
+  --syntax-typescript: 212 68% 66%;
+  --syntax-rust: 355 65% 65%;
+  --syntax-haskell: 92 44% 63%;
+  --syntax-astro: 355 65% 65%;
+  --syntax-jquery: 212 68% 66%;
+  --syntax-react: 199 95% 74%;
+  --syntax-tailwind: 199 95% 74%;
+  --syntax-threejs: 39 77% 69%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 98%;
+  
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  
+  --secondary: 0 0% 13%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 0 0% 13%;
+  --muted-foreground: 0 0% 63.9%;
+  
+  --accent: 0 0% 13%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'JetBrains Mono', monospace;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Syntax highlighting classes */
+.syntax-c { color: hsl(var(--syntax-c)); }
+.syntax-python { color: hsl(var(--syntax-python)); }
+.syntax-javascript { color: hsl(var(--syntax-javascript)); }
+.syntax-typescript { color: hsl(var(--syntax-typescript)); }
+.syntax-rust { color: hsl(var(--syntax-rust)); }
+.syntax-haskell { color: hsl(var(--syntax-haskell)); }
+.syntax-astro { color: hsl(var(--syntax-astro)); }
+.syntax-jquery { color: hsl(var(--syntax-jquery)); }
+.syntax-react { color: hsl(var(--syntax-react)); }
+.syntax-tailwind { color: hsl(var(--syntax-tailwind)); }
+.syntax-threejs { color: hsl(var(--syntax-threejs)); }
+
+/* Custom card styling */
+.custom-card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  transition: all 0.2s ease;
 }
+
+.custom-card:hover {
+  border-color: hsl(var(--primary));
+}
+
+/* Custom button styling */
+.custom-button {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+  border: 1px solid hsl(var(--border));
+  transition: all 0.2s ease;
+}
+
+.custom-button:hover {
+  background-color: hsl(var(--accent));
+  border-color: hsl(var(--primary));
+}
+
+/* Monaco editor customization */
+.monaco-editor {
+  padding: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid hsl(var(--border));
+}
+
+.monaco-editor .margin {
+  background-color: hsl(var(--background)) !important;
+}
+
+/* Navigation styling */
+.nav-link {
+  color: hsl(var(--muted-foreground));
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: hsl(var(--foreground));
+}
+
+.nav-link.active {
+  color: hsl(var(--foreground));
+}
+
+/* Badge styling */
+.difficulty-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+}
+
+/* Divider styling */
+.custom-divider {
+  border-color: hsl(var(--border));
+  margin: 2rem 0;
+}
+
+/* Code block styling */
+.code-block {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* New colored text utilities */
+.text-tech {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.text-tech.c { color: hsl(var(--syntax-c)); }
+.text-tech.python { color: hsl(var(--syntax-python)); }
+.text-tech.javascript { color: hsl(var(--syntax-javascript)); }
+.text-tech.typescript { color: hsl(var(--syntax-typescript)); }
+.text-tech.rust { color: hsl(var(--syntax-rust)); }
+.text-tech.haskell { color: hsl(var(--syntax-haskell)); }
+.text-tech.astro { color: hsl(var(--syntax-astro)); }
+.text-tech.jquery { color: hsl(var(--syntax-jquery)); }
+.text-tech.react { color: hsl(var(--syntax-react)); }
+.text-tech.tailwind { color: hsl(var(--syntax-tailwind)); }
+.text-tech.threejs { color: hsl(var(--syntax-threejs)); }
+
