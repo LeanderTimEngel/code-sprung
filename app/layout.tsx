@@ -33,7 +33,7 @@ export default function RootLayout({
                       <div className="flex items-center gap-6">
                         <Link href="/" className="flex items-center gap-2 font-mono">
                           <Code className="h-5 w-5" />
-                          <span className="font-bold">jsbasics.dev</span>
+                          <span className="font-bold">codesprung.dev</span>
                         </Link>
                         <div className="hidden md:block">
                           <MainNav />
@@ -55,23 +55,23 @@ export default function RootLayout({
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                       <div className="flex items-center gap-2 font-mono">
                         <Code className="h-4 w-4" />
-                        <span>jsbasics.dev</span>
+                        <span>codesprung.dev</span>
                       </div>
                       <div className="flex items-center gap-4">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        <a href="https://github.com/LeanderTimEngel/code-sprung" target="_blank" rel="noopener noreferrer" className="nav-link">
                           <Github className="h-4 w-4" />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        <a href="https://www.linkedin.com/in/leander-engel/" target="_blank" rel="noopener noreferrer" className="nav-link">
                           <Linkedin className="h-4 w-4" />
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        <a href="https://x.com/leander_engel" target="_blank" rel="noopener noreferrer" className="nav-link">
                           <Twitter className="h-4 w-4" />
                         </a>
                       </div>
                       <div className="flex gap-4 text-sm font-mono text-muted-foreground">
-                        <Link href="/privacy" className="nav-link">Privacy</Link>
-                        <Link href="/terms" className="nav-link">Terms</Link>
-                        <Link href="/imprint" className="nav-link">Imprint</Link>
+                        <Link href="/privacy" className="nav-link">Datenschutz</Link>
+                        <Link href="/terms" className="nav-link">AGBs</Link>
+                        <Link href="/imprint" className="nav-link">Impressum</Link>
                       </div>
                     </div>
                   </div>
