@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, Play, ChevronLeft, ChevronRight } from 'lucide-react'
+import { CheckCircle, XCircle, Play, ChevronLeft, ChevronRight, Copy } from 'lucide-react'
 import { problems } from '@/lib/problems-data'
 import { cn } from '@/lib/utils'
 import { useTheme } from "next-themes"
@@ -33,6 +33,14 @@ function CodeBlock({ children }: { children: React.ReactNode }) {
       <code>{children}</code>
     </pre>
   )
+}
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.write([
+    new ClipboardItem({
+      'text/plain': new Blob([text], { type: 'text/plain' }),
+    }),
+  ])
 }
 
 export default function ProblemPage({ params }: { params: { id: string } }) {
@@ -290,22 +298,19 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
                 <CardTitle className="font-mono text-lg sm:text-xl">Lösung</CardTitle>
               </CardHeader>
               <CardContent className="p-4 sm:p-6 space-y-6">
-                <div className="rounded-lg overflow-hidden border border-border">
-                  <MonacoEditor
-                    height="300px"
-                    language="javascript"
-                    theme={isDarkMode ? "vs-dark" : "vs-light"}
-                    value={problem.solution}
-                    options={{
-                      minimap: { enabled: false },
-                      fontSize: 12,
-                      lineNumbers: 'on',
-                      readOnly: true,
-                      wordWrap: 'on',
-                      wrappingIndent: 'same',
-                      padding: { top: 16, bottom: 16 },
-                    }}
-                  />
+                <div className="relative">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="absolute right-2 top-2 h-8"
+                    onClick={() => copyToClipboard(problem.solution)}
+                  >
+                    <Copy className="h-4 w-4 mr-2" />
+                    Kopieren
+                  </Button>
+                  <pre className="rounded-lg overflow-hidden border border-border bg-muted/30 p-4 font-mono text-sm whitespace-pre-wrap">
+                    <code>{problem.solution}</code>
+                  </pre>
                 </div>
 
                 <div className="space-y-4">
