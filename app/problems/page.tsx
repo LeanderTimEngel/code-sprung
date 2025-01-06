@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowRight, Code, BookOpen, BarChart, CheckCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { problems } from '@/lib/problems-data'
+import { cn } from '@/lib/utils'
 import { useAuth } from '@/components/AuthContext'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '@/lib/firebase'
@@ -65,18 +66,18 @@ export default function ProblemsPage() {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4 font-mono">JavaScript Coding Challenges</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-mono">
-          Sharpen your JavaScript skills with our curated set of coding challenges. 
-          From beginners to advanced programmers, there's something for everyone.
+          Verbessere deine JavaScript-Fähigkeiten mit unserem sorgfältig zusammengestellten Satz von Coding-Challenges. 
+          Von Anfängern bis hin zu fortgeschrittenen Programmierern ist für jeden etwas dabei.
         </p>
       </div>
       
       <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
         <Select onValueChange={handleCategoryChange}>
           <SelectTrigger className="w-full sm:w-[200px] custom-button font-mono">
-            <SelectValue placeholder="Select Category" />
+            <SelectValue placeholder="Kategorie auswählen" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="All" className="font-mono">All Categories</SelectItem>
+            <SelectItem value="All" className="font-mono">Alle Kategorien</SelectItem>
             {categories.map(category => (
               <SelectItem key={category} value={category} className="font-mono">{category}</SelectItem>
             ))}
@@ -85,10 +86,10 @@ export default function ProblemsPage() {
         
         <Select onValueChange={handleDifficultyChange}>
           <SelectTrigger className="w-full sm:w-[200px] custom-button font-mono">
-            <SelectValue placeholder="Select Difficulty" />
+            <SelectValue placeholder="Schwierigkeit auswählen" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="All" className="font-mono">All Difficulties</SelectItem>
+            <SelectItem value="All" className="font-mono">Alle Schwierigkeitsgrade</SelectItem>
             {difficulties.map(difficulty => (
               <SelectItem key={difficulty} value={difficulty} className="font-mono">{difficulty}</SelectItem>
             ))}
@@ -130,22 +131,22 @@ export default function ProblemsPage() {
                   </Badge>
                   <div className="flex items-center text-sm text-muted-foreground">
                     <Code className="w-4 h-4 mr-2" />
-                    Practice coding skills
+                    Programmierfähigkeiten üben
                   </div>
                   <div className="flex items-center text-sm text-muted-foreground">
                     <BookOpen className="w-4 h-4 mr-2" />
-                    Learn core concepts
+                    Kernkonzepte lernen
                   </div>
                   <div className="flex items-center text-sm text-muted-foreground">
                     <BarChart className="w-4 h-4 mr-2" />
-                    Test your knowledge
+                    Dein Wissen testen
                   </div>
                 </div>
                 <Link 
                   href={`/problems/${problem.id}`} 
                   className="mt-4 custom-button inline-flex items-center justify-center rounded-md text-sm font-medium h-10 px-4 py-2 w-full font-mono"
                 >
-                  {solvedChallenges.includes(problem.id) ? 'Review Challenge' : 'Solve Challenge'} <ArrowRight className="w-4 h-4 ml-2" />
+                  {solvedChallenges.includes(problem.id) ? 'Herausforderung Überprüfen' : 'Herausforderung Lösen'} <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </CardContent>
             </Card>
@@ -155,4 +156,3 @@ export default function ProblemsPage() {
     </div>
   )
 }
-

@@ -3,45 +3,77 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 export default function ImprintPage() {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Imprint</h1>
+      <h1 className="text-3xl font-bold">Impressum</h1>
+
+      {/* Firmeninformationen */}
       <Card>
         <CardHeader>
-          <CardTitle>Company Information</CardTitle>
+          <CardTitle>Firmeninformationen</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>JavaScript Basics Ltd.</p>
-          <p>123 Coding Street</p>
-          <p>Web City, Internet 12345</p>
-          <p>Country: Digital Land</p>
+          <p>JavaScript Basics GmbH</p>
+          <p>Musterstraße 123</p>
+          <p>12345 Musterstadt</p>
+          <p>Land: Digitalien</p>
         </CardContent>
       </Card>
+
+      {/* Kontakt */}
       <Card>
         <CardHeader>
-          <CardTitle>Contact</CardTitle>
+          <CardTitle>Kontakt</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>Email: contact@javascriptbasics.com</p>
-          <p>Phone: +1 234 567 890</p>
+          <p>Email: kontakt@javascriptbasics.de</p>
+          <p>Telefon: +49 123 456 7890</p>
         </CardContent>
       </Card>
+
+      {/* Rechtliches */}
       <Card>
         <CardHeader>
-          <CardTitle>Legal</CardTitle>
+          <CardTitle>Rechtliches</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>Registered in Digital Land</p>
-          <p>Company Registration Number: JS12345</p>
-          <p>VAT ID: DE123456789</p>
+          <p>Eingetragen in Digitalien</p>
+          <p>Firmenbuchnummer: JS12345</p>
+          <p>Umsatzsteuer-ID: DE123456789</p>
         </CardContent>
       </Card>
+
+      {/* Verantwortlich für den Inhalt */}
       <Card>
         <CardHeader>
-          <CardTitle>Responsible for Content</CardTitle>
+          <CardTitle>Verantwortlich für den Inhalt</CardTitle>
         </CardHeader>
         <CardContent>
-          <p>John Doe, CEO</p>
-          <p>JavaScript Basics Ltd.</p>
-          <p>123 Coding Street, Web City, Internet 12345</p>
+          <p>Max Mustermann, Geschäftsführer</p>
+          <p>JavaScript Basics GmbH</p>
+          <p>Musterstraße 123, 12345 Musterstadt</p>
+        </CardContent>
+      </Card>
+
+      {/* Haftungsausschluss */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Haftungsausschluss</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+          </p>
+        </CardContent>
+      </Card>
+
+      {/* Urheberrecht */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Urheberrecht</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
         </CardContent>
       </Card>
     </div>

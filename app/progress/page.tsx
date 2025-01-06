@@ -82,19 +82,19 @@ export default function ProgressPage() {
   }
 
   if (!userProgress) {
-    return <div className="text-center py-10">Unable to fetch progress data.</div>
+    return <div className="text-center py-10">Fortschrittsdaten konnten nicht abgerufen werden.</div>
   }
 
   const progressPercentage = (userProgress.solvedProblems.length / userProgress.totalProblems) * 100
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Your JavaScript Learning Progress</h1>
+      <h1 className="text-3xl font-bold">Dein JavaScript Lernfortschritt</h1>
       <Card>
         <CardHeader>
-          <CardTitle>Overall Progress</CardTitle>
+          <CardTitle>Gesamter Fortschritt</CardTitle>
           <CardDescription>
-            You've solved {userProgress.solvedProblems.length} out of {userProgress.totalProblems} problems
+            Du hast {userProgress.solvedProblems.length} von {userProgress.totalProblems} Problemen gelöst
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -108,7 +108,7 @@ export default function ProgressPage() {
               <CardTitle>{topic}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold">{solved} solved</p>
+              <p className="text-2xl font-bold">{solved} gelöst</p>
               <Progress 
                 value={(solved / problems.filter(p => p.category === topic).length) * 100} 
                 className="w-full mt-2" 
@@ -120,14 +120,13 @@ export default function ProgressPage() {
       {!user && (
         <Card>
           <CardHeader>
-            <CardTitle>Sign In to Save Your Progress</CardTitle>
+            <CardTitle>Einloggen, um deinen Fortschritt zu speichern</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Your progress is currently stored locally. Sign in to save your progress across devices and sessions.</p>
+            <p>Dein Fortschritt wird derzeit lokal gespeichert. Melde dich an, um deinen Fortschritt über Geräte und Sitzungen hinweg zu speichern.</p>
           </CardContent>
         </Card>
       )}
     </div>
   )
 }
-

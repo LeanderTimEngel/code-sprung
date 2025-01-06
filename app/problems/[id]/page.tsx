@@ -49,7 +49,7 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
   } = useProblem(params.id)
 
   if (!problem) {
-    return <div className="text-center py-10 font-mono">Problem not found</div>
+    return <div className="text-center py-10 font-mono">Problem nicht gefunden</div>
   }
 
   const isFirstProblem = problem.id === problems[0].id
@@ -76,7 +76,7 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
             )}
           >
             <ChevronLeft className="w-4 h-4" />
-            <span className="sr-only">Previous Challenge</span>
+            <span className="sr-only">Vorherige Herausforderung</span>
           </Button>
           <h1 className="text-3xl font-bold font-mono">
             {problem.id}. {problem.title}
@@ -95,7 +95,7 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
             )}
           >
             <ChevronRight className="w-4 h-4" />
-            <span className="sr-only">Next Challenge</span>
+            <span className="sr-only">Nächste Herausforderung</span>
           </Button>
         </div>
         <Badge className={cn("text-tech", difficultyColor[problem.difficulty])}>
@@ -110,7 +110,7 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
       >
         <Card className="custom-card">
           <CardHeader>
-            <CardTitle className="font-mono">Problem Description</CardTitle>
+            <CardTitle className="font-mono">Problembeschreibung</CardTitle>
           </CardHeader>
           <CardContent>
             <p className="font-mono whitespace-pre-wrap">{problem.description}</p>
@@ -125,15 +125,15 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
       >
         <Card className="custom-card">
           <CardHeader>
-            <CardTitle className="font-mono">Examples</CardTitle>
+            <CardTitle className="font-mono">Beispiele</CardTitle>
           </CardHeader>
           <CardContent>
             {problem.examples.map((example, index) => (
               <div key={index} className="mb-4 last:mb-0">
-                <h3 className="font-semibold font-mono">Example {index + 1}:</h3>
-                <CodeBlock>{`Input: ${example.input}
-Output: ${example.output}
-Explanation: ${example.explanation}`}</CodeBlock>
+                <h3 className="font-semibold font-mono">Beispiel {index + 1}:</h3>
+                <CodeBlock>{`Eingabe: ${example.input}
+Ausgabe: ${example.output}
+Erläuterung: ${example.explanation}`}</CodeBlock>
               </div>
             ))}
           </CardContent>
@@ -147,7 +147,7 @@ Explanation: ${example.explanation}`}</CodeBlock>
       >
         <Card className="custom-card">
           <CardHeader>
-            <CardTitle className="font-mono">Your Code</CardTitle>
+            <CardTitle className="font-mono">Dein Code</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="rounded-lg overflow-hidden border border-border">
@@ -188,14 +188,14 @@ Explanation: ${example.explanation}`}</CodeBlock>
                 className="custom-button font-mono"
               >
                 <Play className="w-4 h-4 mr-2" />
-                Run Tests
+                Tests Ausführen
               </Button>
               <Button 
                 variant="outline" 
                 onClick={() => setShowSolution(!showSolution)}
                 className="custom-button font-mono"
               >
-                {showSolution ? 'Hide Solution' : 'Show Solution'}
+                {showSolution ? 'Lösung Verbergen' : 'Lösung Anzeigen'}
               </Button>
             </div>
           </CardContent>
@@ -212,7 +212,7 @@ Explanation: ${example.explanation}`}</CodeBlock>
           >
             <Card className="custom-card">
               <CardHeader>
-                <CardTitle className="font-mono">Test Results</CardTitle>
+                <CardTitle className="font-mono">Testergebnisse</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -260,7 +260,7 @@ Explanation: ${example.explanation}`}</CodeBlock>
                     className="mt-6"
                   >
                     <Button onClick={goToNextChallenge} className="w-full custom-button font-mono">
-                      Next Challenge
+                      Nächste Herausforderung
                     </Button>
                   </motion.div>
                 )}
@@ -280,12 +280,12 @@ Explanation: ${example.explanation}`}</CodeBlock>
           >
             <Card className="custom-card">
               <CardHeader>
-                <CardTitle className="font-mono">Solution</CardTitle>
+                <CardTitle className="font-mono">Lösung</CardTitle>
               </CardHeader>
               <CardContent>
                 <CodeBlock>{problem.solution}</CodeBlock>
                 <div className="mt-6">
-                  <h3 className="font-semibold font-mono mb-2">Video Explanation</h3>
+                  <h3 className="font-semibold font-mono mb-2">Videoerklärung</h3>
                   <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
                     <iframe
                       src={`https://www.youtube.com/embed/${problem.videoExplanation.split('v=')[1]}`}
@@ -302,7 +302,7 @@ Explanation: ${example.explanation}`}</CodeBlock>
                     className="inline-flex items-center mt-4 text-blue-600 hover:underline transition-colors duration-200 font-mono"
                   >
                     {/* Youtube className="w-4 h-4 mr-1" */}
-                    Watch on YouTube
+                    Auf YouTube ansehen
                   </a>
                 </div>
               </CardContent>
@@ -314,4 +314,3 @@ Explanation: ${example.explanation}`}</CodeBlock>
     </div>
   )
 }
-

@@ -12,9 +12,9 @@ export default function AboutPage() {
         transition={{ duration: 0.5 }}
         className="text-center"
       >
-        <h1 className="text-4xl font-bold mb-4">About JavaScript Basics</h1>
+        <h1 className="text-4xl font-bold mb-4">Über die Grundlagen von JavaScript</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Learn and practice fundamental JavaScript concepts through interactive coding challenges.
+          Lerne und übe grundlegende JavaScript-Konzepte durch interaktive Coding-Challenges.
         </p>
       </motion.div>
       
@@ -25,13 +25,13 @@ export default function AboutPage() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>Our Mission</CardTitle>
+            <CardTitle>Unsere Mission</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              JavaScript Basics is dedicated to helping beginners learn the core concepts of JavaScript
-              through hands-on practice. Our platform offers a series of carefully crafted coding
-              challenges that cover the most important aspects of JavaScript programming.
+              JavaScript Basics widmet sich der Unterstützung von Anfängern beim Erlernen der Kernkonzepte von JavaScript
+              durch praktische Übungen. Unsere Plattform bietet eine Reihe sorgfältig gestalteter Coding-Challenges, die
+              die wichtigsten Aspekte der JavaScript-Programmierung abdecken.
             </p>
           </CardContent>
         </Card>
@@ -44,16 +44,16 @@ export default function AboutPage() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>What You'll Learn</CardTitle>
+            <CardTitle>Was du lernen wirst</CardTitle>
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Variables and Data Types</li>
-              <li>Operators and Expressions</li>
-              <li>Control Flow (if-else statements, loops)</li>
-              <li>Functions</li>
+              <li>Variablen und Datentypen</li>
+              <li>Operatoren und Ausdrücke</li>
+              <li>Kontrollfluss (if-else-Anweisungen, Schleifen)</li>
+              <li>Funktionen</li>
               <li>Arrays</li>
-              <li>Objects</li>
+              <li>Objekte</li>
             </ul>
           </CardContent>
         </Card>
@@ -66,15 +66,15 @@ export default function AboutPage() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>How It Works</CardTitle>
+            <CardTitle>Wie es funktioniert</CardTitle>
           </CardHeader>
           <CardContent>
             <ol className="list-decimal pl-6 space-y-2">
-              <li>Choose a challenge from our list of problems</li>
-              <li>Read the problem description and explanation</li>
-              <li>Write your JavaScript code in the provided editor</li>
-              <li>Run the tests to check your solution</li>
-              <li>Learn from the feedback and improve your code</li>
+              <li>Wähle eine Herausforderung aus unserer Liste von Problemen</li>
+              <li>Lies die Problembeschreibung und Erläuterung</li>
+              <li>Schreibe deinen JavaScript-Code im bereitgestellten Editor</li>
+              <li>Führe die Tests aus, um deine Lösung zu überprüfen</li>
+              <li>Lerne aus dem Feedback und verbessere deinen Code</li>
             </ol>
           </CardContent>
         </Card>
@@ -87,12 +87,12 @@ export default function AboutPage() {
       >
         <Card>
           <CardHeader>
-            <CardTitle>Get Started</CardTitle>
+            <CardTitle>Loslegen</CardTitle>
           </CardHeader>
           <CardContent>
             <p>
-              Ready to begin your JavaScript journey? Head over to the Challenges page and start
-              coding! Don't forget to track your progress on the My Progress page.
+              Bereit, deine JavaScript-Reise zu beginnen? Gehe zur Seite mit den Herausforderungen und starte das
+              Programmieren! Vergiss nicht, deinen Fortschritt auf der Seite "Mein Fortschritt" zu verfolgen.
             </p>
           </CardContent>
         </Card>
@@ -100,4 +100,3 @@ export default function AboutPage() {
     </div>
   )
 }
-

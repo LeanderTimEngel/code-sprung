@@ -9,9 +9,9 @@ export function MainNav() {
 
   const links = [
     { href: '/problems', label: 'challenges', color: 'javascript' },
-    { href: '/progress', label: 'progress', color: 'python' },
-    { href: '/resources', label: 'resources', color: 'rust' },
-    { href: '/approach', label: 'approach', color: 'typescript' },
+    { href: '/progress', label: 'fortschritte', color: 'python' },
+    { href: '/resources', label: 'ressourcen', color: 'rust' },
+    { href: '/approach', label: 'ansatz', color: 'typescript' },
   ]
 
   return (

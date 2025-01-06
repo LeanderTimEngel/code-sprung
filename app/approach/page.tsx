@@ -8,39 +8,39 @@ import Link from 'next/link'
 
 const topics = [
   {
-    title: 'Variables and Data Types',
-    description: 'Learn about declaring variables and understanding different data types in JavaScript.',
-    approach: 'Start with the basics of creating and using variables, then explore various data types like numbers, strings, and booleans.',
+    title: 'Variablen und Datentypen',
+    description: 'Lerne, wie man Variablen deklariert und verschiedene Datentypen in JavaScript versteht.',
+    approach: 'Beginne mit den Grundlagen der Erstellung und Verwendung von Variablen, dann erkunde verschiedene Datentypen wie Zahlen, Zeichenketten und Booleans.',
     icon: Code,
   },
   {
-    title: 'Operators and Expressions',
-    description: 'Explore arithmetic, comparison, and logical operators to create expressions.',
-    approach: 'Practice using different operators to perform calculations and make comparisons. Focus on operator precedence and how to combine operators effectively.',
+    title: 'Operatoren und Ausdrücke',
+    description: 'Erkunde arithmetische, Vergleichs- und logische Operatoren, um Ausdrücke zu erstellen.',
+    approach: 'Übe die Verwendung verschiedener Operatoren, um Berechnungen durchzuführen und Vergleiche anzustellen. Konzentriere dich auf die Operatorrangfolge und wie man Operatoren effektiv kombiniert.',
     icon: Zap,
   },
   {
-    title: 'Control Flow',
-    description: 'Master if-else statements and loops to control the flow of your programs.',
-    approach: 'Begin with simple if-else statements, then progress to more complex conditions. Introduce loops (for, while) and practice solving problems that require iteration.',
+    title: 'Kontrollfluss',
+    description: 'Meistere if-else-Anweisungen und Schleifen, um den Ablauf deiner Programme zu steuern.',
+    approach: 'Beginne mit einfachen if-else-Anweisungen und arbeite dich dann zu komplexeren Bedingungen vor. Führe Schleifen (for, while) ein und übe das Lösen von Problemen, die Iteration erfordern.',
     icon: ArrowRight,
   },
   {
-    title: 'Functions',
-    description: 'Learn to create and use functions to organize and reuse your code.',
-    approach: 'Start with basic function declarations, then move on to function expressions and arrow functions. Practice writing functions with parameters and return values.',
+    title: 'Funktionen',
+    description: 'Lerne, Funktionen zu erstellen und zu verwenden, um deinen Code zu organisieren und wiederzuverwenden.',
+    approach: 'Beginne mit grundlegenden Funktionsdeklarationen, dann gehe über zu Funktionsausdrücken und Pfeilfunktionen. Übe das Schreiben von Funktionen mit Parametern und Rückgabewerten.',
     icon: BookOpen,
   },
   {
     title: 'Arrays',
-    description: 'Discover how to work with collections of data using arrays.',
-    approach: 'Begin with array creation and basic operations. Progress to array methods like map, filter, and reduce. Practice solving problems that involve manipulating arrays.',
+    description: 'Entdecke, wie man mit Arrays arbeitet, um Datenkollektionen zu verwalten.',
+    approach: 'Beginne mit der Erstellung von Arrays und grundlegenden Operationen. Arbeite dich zu Array-Methoden wie map, filter und reduce vor. Übe das Lösen von Problemen, die die Manipulation von Arrays erfordern.',
     icon: BarChart,
   },
   {
-    title: 'Objects',
-    description: 'Understand the basics of objects and how to use them in JavaScript.',
-    approach: 'Start with creating and accessing object properties. Move on to methods, this keyword, and object prototypes. Practice creating and manipulating complex data structures using objects.',
+    title: 'Objekte',
+    description: 'Verstehe die Grundlagen von Objekten und wie man sie in JavaScript verwendet.',
+    approach: 'Beginne mit der Erstellung und dem Zugriff auf Objekteigenschaften. Gehe zu Methoden, dem Schlüsselwort this und Objektprototypen über. Übe das Erstellen und Manipulieren komplexer Datenstrukturen mit Objekten.',
     icon: Users,
   },
 ]
@@ -55,7 +55,7 @@ export default function ApproachPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Our Learning Approach
+          Unser Lernansatz
         </motion.h1>
         <motion.p 
           className="mx-auto max-w-[700px] text-lg text-muted-foreground"
@@ -63,8 +63,8 @@ export default function ApproachPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          At JavaScript Basics, we believe in a structured, hands-on approach to learning. 
-          Our method is designed to take you from beginner to pro through carefully crafted lessons and practical exercises.
+          Bei JavaScript Basics glauben wir an einen strukturierten, praxisnahen Ansatz zum Lernen. 
+          Unsere Methode ist darauf ausgelegt, dich von einem Anfänger zum Profi durch sorgfältig gestaltete Lektionen und praktische Übungen zu führen.
         </motion.p>
       </section>
 
@@ -98,14 +98,14 @@ export default function ApproachPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <h2 className="text-2xl font-bold mb-4">Our Method</h2>
+        <h2 className="text-2xl font-bold mb-4">Unsere Methode</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
-            "Introduce concepts with clear explanations",
-            "Provide interactive coding challenges",
-            "Offer immediate feedback through tests",
-            "Reinforce learning with video explanations",
-            "Encourage application in real-world scenarios"
+            "Führe Konzepte mit klaren Erklärungen ein",
+            "Biete interaktive Coding-Challenges an",
+            "Gib sofortiges Feedback durch Tests",
+            "Verstärke das Lernen mit Videoerklärungen",
+            "Ermutige die Anwendung in realen Szenarien"
           ].map((step, index) => (
             <div key={index} className="flex items-start space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
@@ -121,17 +121,16 @@ export default function ApproachPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
       >
-        <h2 className="text-2xl font-bold">Ready to Start Your JavaScript Journey?</h2>
+        <h2 className="text-2xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
         <p className="text-muted-foreground">
-          Join thousands of learners who have leveled up their coding skills with us.
+          Tritt tausenden von Lernenden bei, die ihre Programmierfähigkeiten mit uns verbessert haben.
         </p>
         <Button asChild size="lg" className="mt-4">
           <Link href="/problems">
-            Start Coding Now <ArrowRight className="ml-2 h-4 w-4" />
+            Jetzt Programmieren Starten <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
       </motion.section>
     </div>
   )
 }
-
