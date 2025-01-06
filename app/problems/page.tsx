@@ -114,7 +114,7 @@ export default function ProblemsPage() {
           >
             <Card className="custom-card h-full flex flex-col">
               <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="flex items-center justify-between font-mono text-lg sm:text-xl">
+                <CardTitle className="flex items-center justify-between font-mono text-xl sm:text-2xl">
                   <span className="flex items-center">
                     {problem.title}
                     {solvedChallenges.includes(problem.id) && (

@@ -289,27 +289,43 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
               <CardHeader className="p-4 sm:p-6">
                 <CardTitle className="font-mono text-lg sm:text-xl">Lösung</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 sm:p-6">
-                <CodeBlock>{problem.solution}</CodeBlock>
-                <div className="mt-6">
-                  <h3 className="font-semibold font-mono mb-2">Videoerklärung</h3>
-                  <div className="relative w-full pb-[56.25%]">
+              <CardContent className="p-4 sm:p-6 space-y-6">
+                <div className="rounded-lg overflow-hidden border border-border">
+                  <MonacoEditor
+                    height="300px"
+                    language="javascript"
+                    theme={isDarkMode ? "vs-dark" : "vs-light"}
+                    value={problem.solution}
+                    options={{
+                      minimap: { enabled: false },
+                      fontSize: 12,
+                      lineNumbers: 'on',
+                      readOnly: true,
+                      wordWrap: 'on',
+                      wrappingIndent: 'same',
+                      padding: { top: 16, bottom: 16 },
+                    }}
+                  />
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-semibold font-mono text-lg">Videoerklärung</h3>
+                  <div className="relative w-full pb-[56.25%] rounded-lg overflow-hidden border border-border">
                     <iframe
                       src={`https://www.youtube.com/embed/${problem.videoExplanation.split('v=')[1]}`}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="absolute top-0 left-0 w-full h-full rounded-lg"
-                    ></iframe>
+                      className="absolute top-0 left-0 w-full h-full"
+                    />
                   </div>
                   <a
                     href={problem.videoExplanation}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center mt-4 text-blue-600 hover:underline transition-colors duration-200 font-mono"
+                    className="inline-flex items-center text-primary hover:underline transition-colors duration-200 font-mono text-sm"
                   >
-                    {/* Youtube className="w-4 h-4 mr-1" */}
-                    Auf YouTube ansehen
+                    Auf YouTube ansehen →
                   </a>
                 </div>
               </CardContent>
