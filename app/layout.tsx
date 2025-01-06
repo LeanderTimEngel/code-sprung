@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { ThemeProvider } from '@/components/theme-provider'
 import { MainNav } from '@/components/main-nav'
 import { UserNav } from '@/components/user-nav'
