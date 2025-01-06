@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# codesprung.dev
 
-## Getting Started
+**codesprung.dev** ist eine interaktive Lernplattform, die Entwicklern hilft, ihre JavaScript-Kenntnisse durch praxisnahe Coding-Challenges zu verbessern. Mit Echtzeit-Feedback und einem strukturierten Lernpfad bieten wir eine umfassende Umgebung für Anfänger und Fortgeschrittene.
 
-First, run the development server:
+![JavaScript Basics Banner](./public/banner.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Inhaltsverzeichnis
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Eigenschaften](#eigenschaften)
+- [Technologien](#technologien)
+- [Installation](#installation)
+- [Erste Schritte](#erste-schritte)
+- [Projektstruktur](#projektstruktur)
+- [Deployment](#deployment)
+- [Rechtliche Hinweise](#rechtliche-hinweise)
+- [Kontakt](#kontakt)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Eigenschaften
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Interaktive Herausforderungen:** Praktische Coding-Übungen zur Festigung des Gelernten.
+- **Echtzeit-Feedback:** Sofortige Testergebnisse und Erklärungen.
+- **Strukturierter Lernpfad:** Von den Grundlagen bis zu fortgeschrittenen Konzepten.
+- **Fortschrittsverfolgung:** Behalte deinen Lernfortschritt im Blick.
 
-## Learn More
+## Technologien
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js](https://nextjs.org) - React-Framework für serverseitiges Rendering.
+- [TypeScript](https://www.typescriptlang.org) - Typensicheres JavaScript.
+- [Firebase](https://firebase.google.com) - Backend-Dienste.
+- [Tailwind CSS](https://tailwindcss.com) - Utility-First CSS Framework.
+- [Framer Motion](https://www.framer.com/motion/) - Animationsbibliothek.
+- [Lucide React](https://lucide.dev/) - Iconsammlung für React.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Folge diesen Schritten, um das Projekt lokal einzurichten:
 
-## Deploy on Vercel
+### Voraussetzungen
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Node.js](https://nodejs.org/) (Version 14 oder höher)
+- Paketmanager Ihrer Wahl: [npm](https://www.npmjs.com/), [Yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/) oder [Bun](https://bun.sh/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Schritte
