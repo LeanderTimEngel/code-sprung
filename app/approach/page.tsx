@@ -47,10 +47,10 @@ const topics = [
 
 export default function ApproachPage() {
   return (
-    <div className="space-y-12 py-8">
+    <div className="space-y-8 sm:space-y-12 py-4 sm:py-8 px-4 sm:px-0">
       <section className="text-center space-y-4">
         <motion.h1 
-          className="text-4xl font-extrabold tracking-tight lg:text-5xl"
+          className="text-3xl sm:text-4xl font-extrabold tracking-tight lg:text-5xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -58,7 +58,7 @@ export default function ApproachPage() {
           Unser Lernansatz
         </motion.h1>
         <motion.p 
-          className="mx-auto max-w-[700px] text-lg text-muted-foreground"
+          className="mx-auto max-w-[700px] text-base sm:text-lg text-muted-foreground px-4 sm:px-0"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -69,7 +69,7 @@ export default function ApproachPage() {
       </section>
 
       <motion.section 
-        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -78,28 +78,28 @@ export default function ApproachPage() {
           <Card key={index} className="flex flex-col">
             <CardHeader>
               <div className="flex items-center space-x-2">
-                <div className="p-2 bg-primary rounded-md">
-                  <topic.icon className="h-6 w-6 text-primary-foreground" />
+                <div className="p-1.5 sm:p-2 bg-primary rounded-md">
+                  <topic.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
                 </div>
-                <CardTitle>{topic.title}</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">{topic.title}</CardTitle>
               </div>
             </CardHeader>
             <CardContent className="flex-grow">
-              <CardDescription className="mb-4">{topic.description}</CardDescription>
-              <p className="text-sm">{topic.approach}</p>
+              <CardDescription className="mb-3 sm:mb-4 text-sm sm:text-base">{topic.description}</CardDescription>
+              <p className="text-xs sm:text-sm">{topic.approach}</p>
             </CardContent>
           </Card>
         ))}
       </motion.section>
 
       <motion.section 
-        className="bg-secondary p-8 rounded-lg"
+        className="bg-secondary p-4 sm:p-8 rounded-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <h2 className="text-2xl font-bold mb-4">Unsere Methode</h2>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="text-xl sm:text-2xl font-bold mb-4">Unsere Methode</h2>
+        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {[
             "Konzepte mit klaren Erklärungen",
             "Interaktive Coding-Challenges",
@@ -109,24 +109,24 @@ export default function ApproachPage() {
             "Eine Menge Spaß :)"
           ].map((step, index) => (
             <div key={index} className="flex items-start space-x-2">
-              <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-              <p>{step}</p>
+              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 mt-1 flex-shrink-0" />
+              <p className="text-sm sm:text-base">{step}</p>
             </div>
           ))}
         </div>
       </motion.section>
 
       <motion.section 
-        className="text-center space-y-4"
+        className="text-center space-y-4 px-4 sm:px-0"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8 }}
       >
-        <h2 className="text-2xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
-        <p className="text-muted-foreground">
+        <h2 className="text-xl sm:text-2xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
+        <p className="text-sm sm:text-base text-muted-foreground">
           Tritt hunderten von Lernenden bei, die ihre Programmierfähigkeiten mit uns verbessert haben.
         </p>
-        <Button asChild size="lg" className="mt-4">
+        <Button asChild size="lg" className="mt-4 w-full sm:w-auto">
           <Link href="/problems">
             Jetzt Programmieren Starten <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

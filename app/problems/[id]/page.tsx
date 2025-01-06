@@ -63,33 +63,33 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
   const isLastProblem = problem.id === problems[problems.length - 1].id
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 p-4">
+    <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 p-3 sm:p-4">
       {showConfetti && <Confetti />}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center justify-between"
+        className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-2"
       >
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
           <Button
             onClick={goToPreviousChallenge}
             disabled={isFirstProblem}
             variant="outline"
             size="sm"
             className={cn(
-              "w-8 h-8 p-0 rounded-full custom-button",
+              "w-10 h-10 sm:w-8 sm:h-8 p-0 rounded-full custom-button",
               isFirstProblem && "opacity-50 cursor-not-allowed"
             )}
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
             <span className="sr-only">Vorherige Herausforderung</span>
           </Button>
-          <h1 className="text-3xl font-bold font-mono">
+          <h1 className="text-xl sm:text-3xl font-bold font-mono break-words">
             {problem.id}. {problem.title}
           </h1>
           {isSolved && (
-            <CheckCircle className="w-6 h-6 text-green-500" />
+            <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
           )}
           <Button
             onClick={goToNextChallenge}
@@ -97,15 +97,15 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
             variant="outline"
             size="sm"
             className={cn(
-              "w-8 h-8 p-0 rounded-full custom-button",
+              "w-10 h-10 sm:w-8 sm:h-8 p-0 rounded-full custom-button",
               isLastProblem && "opacity-50 cursor-not-allowed"
             )}
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
             <span className="sr-only">Nächste Herausforderung</span>
           </Button>
         </div>
-        <Badge className={cn("text-tech", difficultyColor[problem.difficulty])}>
+        <Badge className={cn("text-tech self-start sm:self-center", difficultyColor[problem.difficulty])}>
           {problem.difficulty}
         </Badge>
       </motion.div>
@@ -116,11 +116,11 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Card className="custom-card">
-          <CardHeader>
-            <CardTitle className="font-mono">Problembeschreibung</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="font-mono text-lg sm:text-xl">Problembeschreibung</CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="font-mono whitespace-pre-wrap">{problem.description}</p>
+          <CardContent className="p-4 sm:p-6">
+            <p className="font-mono whitespace-pre-wrap text-sm sm:text-base">{problem.description}</p>
           </CardContent>
         </Card>
       </motion.div>
@@ -131,13 +131,13 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <Card className="custom-card">
-          <CardHeader>
-            <CardTitle className="font-mono">Beispiele</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="font-mono text-lg sm:text-xl">Beispiele</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 sm:p-6">
             {problem.examples.map((example, index) => (
               <div key={index} className="mb-4 last:mb-0">
-                <h3 className="font-semibold font-mono">Beispiel {index + 1}:</h3>
+                <h3 className="font-semibold font-mono mb-2">Beispiel {index + 1}:</h3>
                 <CodeBlock>{`Eingabe: ${example.input}
 Ausgabe: ${example.output}
 Erläuterung: ${example.explanation}`}</CodeBlock>
@@ -153,20 +153,20 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <Card className="custom-card">
-          <CardHeader>
-            <CardTitle className="font-mono">Dein Code</CardTitle>
+          <CardHeader className="p-4 sm:p-6">
+            <CardTitle className="font-mono text-lg sm:text-xl">Dein Code</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 sm:p-6">
             <div className="rounded-lg overflow-hidden border border-border">
               <MonacoEditor
-                height="400px"
+                height="300px"
                 language="javascript"
                 theme={isDarkMode ? "vs-dark" : "vs-light"}
                 value={code}
                 onChange={(value) => setCode(value || '')}
                 options={{
                   minimap: { enabled: false },
-                  fontSize: 14,
+                  fontSize: 12,
                   lineNumbers: 'on',
                   roundedSelection: false,
                   scrollBeyondLastLine: false,
@@ -189,10 +189,10 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
                 }}
               />
             </div>
-            <div className="flex justify-between mt-4">
+            <div className="flex flex-col sm:flex-row gap-3 mt-4">
               <Button 
                 onClick={runTests} 
-                className="custom-button font-mono"
+                className="custom-button font-mono w-full sm:w-auto min-h-[44px]"
               >
                 <Play className="w-4 h-4 mr-2" />
                 Tests Ausführen
@@ -200,7 +200,7 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
               <Button 
                 variant="outline" 
                 onClick={() => setShowSolution(!showSolution)}
-                className="custom-button font-mono"
+                className="custom-button font-mono w-full sm:w-auto min-h-[44px]"
               >
                 {showSolution ? 'Lösung Verbergen' : 'Lösung Anzeigen'}
               </Button>
@@ -218,10 +218,10 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
             transition={{ duration: 0.5 }}
           >
             <Card className="custom-card">
-              <CardHeader>
-                <CardTitle className="font-mono">Testergebnisse</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="font-mono text-lg sm:text-xl">Testergebnisse</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 <div className="space-y-4">
                   {(results as TestResult[]).map((result: TestResult, index: number) => (
                     <motion.div
@@ -286,20 +286,20 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
             transition={{ duration: 0.5 }}
           >
             <Card className="custom-card">
-              <CardHeader>
-                <CardTitle className="font-mono">Lösung</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="font-mono text-lg sm:text-xl">Lösung</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 <CodeBlock>{problem.solution}</CodeBlock>
                 <div className="mt-6">
                   <h3 className="font-semibold font-mono mb-2">Videoerklärung</h3>
-                  <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                  <div className="relative w-full pb-[56.25%]">
                     <iframe
                       src={`https://www.youtube.com/embed/${problem.videoExplanation.split('v=')[1]}`}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="w-full h-full"
+                      className="absolute top-0 left-0 w-full h-full rounded-lg"
                     ></iframe>
                   </div>
                   <a

@@ -46,7 +46,14 @@ export function UserNav() {
   };
 
   if (loading) {
-    return <Button variant="ghost" className="custom-button">loading...</Button>;
+    return (
+      <Button 
+        variant="ghost" 
+        className="custom-button w-full md:w-auto min-h-[44px] text-base"
+      >
+        loading...
+      </Button>
+    );
   }
 
   if (!user) {
@@ -55,7 +62,7 @@ export function UserNav() {
         variant="outline" 
         onClick={handleSignIn} 
         disabled={isLoading}
-        className="custom-button font-mono text-sm"
+        className="custom-button font-mono text-base w-full md:w-auto min-h-[44px] px-4"
       >
         {isLoading ? 'signing in...' : 'sign in'}
       </Button>
@@ -65,18 +72,29 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="custom-button font-mono text-sm px-4">
-          {user.email}
+        <Button 
+          variant="ghost" 
+          className="custom-button font-mono text-base w-full md:w-auto min-h-[44px] px-4"
+        >
+          <span className="block md:hidden">
+            {user.email?.split('@')[0]}
+          </span>
+          <span className="hidden md:block">
+            {user.email}
+          </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end">
-        <DropdownMenuLabel className="font-mono text-sm">
+      <DropdownMenuContent 
+        className="w-[calc(100vw-2rem)] md:w-56" 
+        align="end"
+      >
+        <DropdownMenuLabel className="font-mono text-base">
           {user.displayName || user.email}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem 
           onClick={handleSignOut}
-          className="font-mono text-sm"
+          className="font-mono text-base min-h-[44px]"
         >
           {isLoading ? 'logging out...' : 'log out'}
         </DropdownMenuItem>

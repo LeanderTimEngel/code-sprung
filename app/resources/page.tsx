@@ -92,18 +92,18 @@ function ResourceCard({ resource, index }: { resource: Resource; index: number }
     >
       <Card className="h-full flex flex-col">
         <CardHeader>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <div className="flex items-center space-x-2 flex-wrap">
               <div className="p-2 bg-primary rounded-md">
-                <resource.icon className="h-6 w-6 text-primary-foreground" />
+                <resource.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
               </div>
-              <CardTitle>{resource.title}</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">{resource.title}</CardTitle>
             </div>
-            <Badge>{resource.type}</Badge>
+            <Badge className="whitespace-nowrap">{resource.type}</Badge>
           </div>
         </CardHeader>
         <CardContent className="flex-grow flex flex-col justify-between">
-          <CardDescription className="mb-4">{resource.description}</CardDescription>
+          <CardDescription className="mb-4 text-sm sm:text-base">{resource.description}</CardDescription>
           <Button asChild variant="outline" className="w-full mt-4">
             <Link 
               href={resource.url}
@@ -111,7 +111,8 @@ function ResourceCard({ resource, index }: { resource: Resource; index: number }
               rel="noopener noreferrer"
               className="flex items-center justify-center"
             >
-              Ressource besuchen <ExternalLink className="ml-2 h-4 w-4" />
+              <span className="text-sm sm:text-base">Ressource besuchen</span>
+              <ExternalLink className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
             </Link>
           </Button>
         </CardContent>
@@ -128,34 +129,34 @@ export default function ResourcesPage() {
   }
 
   return (
-      <div className="space-y-12 py-8">
-        <section className="text-center space-y-4">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-            JavaScript Lernressourcen
-          </h1>
-          <p className="mx-auto max-w-[700px] text-lg text-muted-foreground">
-            Erkunde unsere sorgfältig zusammengestellte Sammlung hochwertiger Ressourcen, um deine JavaScript-Lernreise zu verbessern.
-          </p>
-        </section>
+    <div className="space-y-8 sm:space-y-12 py-4 sm:py-8 px-4 sm:px-8">
+      <section className="text-center space-y-3 sm:space-y-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight lg:text-5xl">
+          JavaScript Lernressourcen
+        </h1>
+        <p className="mx-auto max-w-[700px] text-base sm:text-lg text-muted-foreground px-2">
+          Erkunde unsere sorgfältig zusammengestellte Sammlung hochwertiger Ressourcen, um deine JavaScript-Lernreise zu verbessern.
+        </p>
+      </section>
 
-        <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {resources.map((resource, index) => (
-            <ResourceCard key={index} resource={resource} index={index} />
-          ))}
-        </section>
+      <section className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {resources.map((resource, index) => (
+          <ResourceCard key={index} resource={resource} index={index} />
+        ))}
+      </section>
 
-        <section className="bg-secondary p-8 rounded-lg text-center space-y-4">
-          <h2 className="text-2xl font-bold">Kannst du nicht finden, wonach du suchst?</h2>
-          <p className="text-muted-foreground">
-            Unser Team aktualisiert diese Liste ständig mit den besten JavaScript-Ressourcen. 
-            Wenn du einen Vorschlag hast, würden wir gerne von dir hören!
-          </p>
-          <Button asChild size="lg" className="mt-4">
-            <Link href="/contact">
-              Ressource vorschlagen <ExternalLink className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </section>
-      </div>
+      <section className="bg-secondary p-4 sm:p-8 rounded-lg text-center space-y-3 sm:space-y-4">
+        <h2 className="text-xl sm:text-2xl font-bold">Kannst du nicht finden, wonach du suchst?</h2>
+        <p className="text-sm sm:text-base text-muted-foreground px-2">
+          Unser Team aktualisiert diese Liste ständig mit den besten JavaScript-Ressourcen. 
+          Wenn du einen Vorschlag hast, würden wir gerne von dir hören!
+        </p>
+        <Button asChild size="lg" className="mt-4">
+          <Link href="/contact" className="flex items-center justify-center text-sm sm:text-base">
+            Ressource vorschlagen <ExternalLink className="ml-2 h-3 w-3 sm:h-4 sm:w-4" />
+          </Link>
+        </Button>
+      </section>
+    </div>
   )
 }

@@ -6,21 +6,21 @@ import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
-    <div className="space-y-20 py-10">
+    <div className="space-y-12 sm:space-y-20 py-6 sm:py-10 px-4 sm:px-6">
       {/* Hero Section */}
-      <section className="text-center space-y-8">
-        <div className="space-y-4">
-          <h1 className="text-5xl font-extrabold tracking-tight lg:text-6xl">
+      <section className="text-center space-y-6 sm:space-y-8">
+        <div className="space-y-3 sm:space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight lg:text-6xl">
             Master <span className="text-tech javascript">JavaScript</span>
           </h1>
-          <h2 className="text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight lg:text-4xl">
             Eine Herausforderung nach der anderen
           </h2>
         </div>
-        <p className="mx-auto max-w-[700px] text-xl text-muted-foreground">
+        <p className="mx-auto max-w-[700px] text-lg sm:text-xl text-muted-foreground">
           Interaktive Coding-Challenges, Echtzeit-Feedback und ein strukturierter Lernpfad, der dich vom Anfänger zum Profi bringt.
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
           <Button asChild size="lg" className="bg-[#f7df1e] text-black hover:bg-[#f7df1e]/90">
             <Link href="/problems">Jetzt Programmieren Starten</Link>
           </Button>
@@ -31,9 +31,9 @@ export default function Home() {
       </section>
 
       {/* Feature Highlights */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-center">Warum uns wählen?</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <section className="space-y-6 sm:space-y-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center">Warum uns wählen?</h2>
+        <div className="grid gap-4 sm:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {[
             { icon: Code, title: 'Interaktive Herausforderungen', description: 'Praktische Coding-Übungen, die dein Lernen vertiefen und praktische Fähigkeiten aufbauen.', color: 'javascript' },
             { icon: Zap, title: 'Echtzeit-Feedback', description: 'Sofortige Testergebnisse und Erklärungen, die dir helfen, aus deinen Fehlern zu lernen.', color: 'python' },
@@ -55,9 +55,9 @@ export default function Home() {
       </section>
 
       {/* Learning Process */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-center">Unser Lernprozess</h2>
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <section className="space-y-6 sm:space-y-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center">Unser Lernprozess</h2>
+        <div className="grid gap-4 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: Brain, title: 'Lernen', description: 'Verstehe Schlüsselkonzepte durch prägnante Erklärungen', color: 'typescript' },
             { icon: Code, title: 'Praktizieren', description: 'Wende dein Wissen in interaktiven Coding-Challenges an', color: 'javascript' },
@@ -80,9 +80,9 @@ export default function Home() {
       </section>
 
       {/* Topics Overview */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-center">Was du lernen wirst</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <section className="space-y-6 sm:space-y-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center">Was du lernen wirst</h2>
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {[
             'Variablen & Datentypen',
             'Operatoren & Ausdrücke',
@@ -109,22 +109,22 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="text-center space-y-8 bg-muted py-16 rounded-lg">
-        <h2 className="text-4xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      <section className="text-center space-y-6 sm:space-y-8 bg-muted py-8 sm:py-16 px-4 sm:px-6 rounded-lg">
+        <h2 className="text-3xl sm:text-4xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
           Tritt tausenden von Lernenden bei, die ihre Programmierfähigkeiten mit uns verbessert haben. Starte noch heute deine Reise zur JavaScript-Meisterschaft!
         </p>
-        <Button asChild size="lg" className="bg-[#f7df1e] text-black hover:bg-[#f7df1e]/90">
-          <Link href="/problems" className="flex items-center gap-2">
+        <Button asChild size="lg" className="w-full sm:w-auto bg-[#f7df1e] text-black hover:bg-[#f7df1e]/90">
+          <Link href="/problems" className="flex items-center justify-center gap-2">
             Loslegen <ArrowRight className="h-5 w-5" />
           </Link>
         </Button>
       </section>
 
       {/* Testimonials or Stats */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-center">Unser Einfluss</h2>
-        <div className="grid gap-8 md:grid-cols-3">
+      <section className="space-y-6 sm:space-y-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center">Unser Einfluss</h2>
+        <div className="grid gap-4 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             { icon: Trophy, title: '1000+', description: 'Herausforderungen abgeschlossen', color: 'javascript' },
             { icon: Users, title: '100+', description: 'Aktive Lernende', color: 'python' },

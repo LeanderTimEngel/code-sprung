@@ -18,26 +18,26 @@ interface UserProgress {
 
 function ProgressSkeleton() {
   return (
-    <div className="space-y-6">
-      <Skeleton className="h-10 w-3/4" />
+    <div className="space-y-4 p-4 sm:space-y-6 sm:p-0">
+      <Skeleton className="h-8 sm:h-10 w-full sm:w-3/4" />
       <Card>
-        <CardHeader>
-          <Skeleton className="h-6 w-1/2" />
-          <Skeleton className="h-4 w-3/4" />
+        <CardHeader className="space-y-2">
+          <Skeleton className="h-5 sm:h-6 w-2/3 sm:w-1/2" />
+          <Skeleton className="h-3 sm:h-4 w-full sm:w-3/4" />
         </CardHeader>
         <CardContent>
-          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-3 sm:h-4 w-full" />
         </CardContent>
       </Card>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
         {[1, 2, 3, 4].map((_, index) => (
           <Card key={index}>
             <CardHeader>
-              <Skeleton className="h-6 w-1/2" />
+              <Skeleton className="h-5 sm:h-6 w-2/3 sm:w-1/2" />
             </CardHeader>
             <CardContent>
-              <Skeleton className="h-8 w-1/4 mb-2" />
-              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-6 sm:h-8 w-1/3 sm:w-1/4 mb-2" />
+              <Skeleton className="h-3 sm:h-4 w-full" />
             </CardContent>
           </Card>
         ))}
@@ -88,12 +88,12 @@ export default function ProgressPage() {
   const progressPercentage = (userProgress.solvedProblems.length / userProgress.totalProblems) * 100
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Dein JavaScript Lernfortschritt</h1>
+    <div className="space-y-4 p-4 sm:space-y-6 sm:p-0">
+      <h1 className="text-2xl sm:text-3xl font-bold">Dein JavaScript Lernfortschritt</h1>
       <Card>
-        <CardHeader>
-          <CardTitle>Gesamter Fortschritt</CardTitle>
-          <CardDescription>
+        <CardHeader className="space-y-1 sm:space-y-2">
+          <CardTitle className="text-lg sm:text-xl">Gesamter Fortschritt</CardTitle>
+          <CardDescription className="text-sm sm:text-base">
             Du hast {userProgress.solvedProblems.length} von {userProgress.totalProblems} Problemen gelöst
           </CardDescription>
         </CardHeader>
@@ -101,14 +101,14 @@ export default function ProgressPage() {
           <Progress value={progressPercentage} className="w-full" />
         </CardContent>
       </Card>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
         {Object.entries(userProgress.topicProgress).map(([topic, solved]) => (
           <Card key={topic}>
             <CardHeader>
-              <CardTitle>{topic}</CardTitle>
+              <CardTitle className="text-lg sm:text-xl">{topic}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold">{solved} gelöst</p>
+              <p className="text-xl sm:text-2xl font-bold">{solved} gelöst</p>
               <Progress 
                 value={(solved / problems.filter(p => p.category === topic).length) * 100} 
                 className="w-full mt-2" 
@@ -120,10 +120,12 @@ export default function ProgressPage() {
       {!user && (
         <Card>
           <CardHeader>
-            <CardTitle>Einloggen, um deinen Fortschritt zu speichern</CardTitle>
+            <CardTitle className="text-lg sm:text-xl">Einloggen, um deinen Fortschritt zu speichern</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Dein Fortschritt wird derzeit lokal gespeichert. Melde dich an, um deinen Fortschritt über Geräte und Sitzungen hinweg zu speichern.</p>
+            <p className="text-sm sm:text-base">
+              Dein Fortschritt wird derzeit lokal gespeichert. Melde dich an, um deinen Fortschritt über Geräte und Sitzungen hinweg zu speichern.
+            </p>
           </CardContent>
         </Card>
       )}
