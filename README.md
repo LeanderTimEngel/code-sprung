@@ -85,11 +85,6 @@ codesprung.dev/
 ├── public/ # Statische Assets
 └── styles/ # Globale Styles
 
-
-## 🤝 Mitwirken
-
-Beiträge sind willkommen! Bitte lies unsere [Contribution Guidelines](CONTRIBUTING.md) für Details.
-
 ## 📝 Lizenz
 
 Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe [LICENSE](LICENSE) für Details.
@@ -97,8 +92,7 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe [LICENSE](LICENSE) f�
 ## 📧 Kontakt
 
 - Website: [codesprung.dev](https://codesprung.dev)
-- Email: [contact@codesprung.dev](mailto:contact@codesprung.dev)
-- Twitter: [@codesprung](https://twitter.com/codesprung)
+- Email: [leanderengel99@gmail.com](mailto:leanderengel99@gmail.com)
 
 ---
 
