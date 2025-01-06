@@ -101,11 +101,12 @@ export default function ApproachPage() {
         <h2 className="text-2xl font-bold mb-4">Unsere Methode</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
-            "Führe Konzepte mit klaren Erklärungen ein",
-            "Biete interaktive Coding-Challenges an",
-            "Gib sofortiges Feedback durch Tests",
-            "Verstärke das Lernen mit Videoerklärungen",
-            "Ermutige die Anwendung in realen Szenarien"
+            "Konzepte mit klaren Erklärungen",
+            "Interaktive Coding-Challenges",
+            "Sofortiges Feedback durch Tests",
+            "Verstehe die Lösung mit Videoerklärungen",
+            "Realitätsnahe Szenarien",
+            "Eine Menge Spaß :)"
           ].map((step, index) => (
             <div key={index} className="flex items-start space-x-2">
               <CheckCircle className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
@@ -123,7 +124,7 @@ export default function ApproachPage() {
       >
         <h2 className="text-2xl font-bold">Bereit, deine JavaScript-Reise zu beginnen?</h2>
         <p className="text-muted-foreground">
-          Tritt tausenden von Lernenden bei, die ihre Programmierfähigkeiten mit uns verbessert haben.
+          Tritt hunderten von Lernenden bei, die ihre Programmierfähigkeiten mit uns verbessert haben.
         </p>
         <Button asChild size="lg" className="mt-4">
           <Link href="/problems">

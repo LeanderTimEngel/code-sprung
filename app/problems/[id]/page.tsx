@@ -11,6 +11,13 @@ import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from 'framer-motion'
 import { Confetti } from '@/components/Confetti'
 import { useProblem } from '@/hooks/useProblem'
+import { Congratulations } from '@/components/congratulations'
+
+interface TestResult {
+  passed: boolean;
+  description: string;
+  error?: string;
+}
 
 const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false })
 
@@ -156,7 +163,7 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
                 language="javascript"
                 theme={isDarkMode ? "vs-dark" : "vs-light"}
                 value={code}
-                onChange={(value) => setCode(value)}
+                onChange={(value) => setCode(value || '')}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 14,
@@ -216,7 +223,7 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {results.map((result, index) => (
+                  {(results as TestResult[]).map((result: TestResult, index: number) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}

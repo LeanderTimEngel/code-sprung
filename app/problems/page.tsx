@@ -19,8 +19,8 @@ const difficultyColor = {
   Hard: 'syntax-rust',
 }
 
-const categories = [...new Set(problems.map(problem => problem.category))]
-const difficulties = [...new Set(problems.map(problem => problem.difficulty))]
+const categories = Array.from(new Set(problems.map(problem => problem.category)))
+const difficulties = Array.from(new Set(problems.map(problem => problem.difficulty)))
 
 export default function ProblemsPage() {
   const [selectedCategory, setSelectedCategory] = useState('All')

@@ -126,9 +126,9 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center">Unser Einfluss</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { icon: Trophy, title: '10.000+', description: 'Herausforderungen abgeschlossen', color: 'javascript' },
-            { icon: Users, title: '5.000+', description: 'Aktive Lernende', color: 'python' },
-            { icon: Star, title: '4,9/5', description: 'Durchschnittliche Bewertung', color: 'rust' },
+            { icon: Trophy, title: '1000+', description: 'Herausforderungen abgeschlossen', color: 'javascript' },
+            { icon: Users, title: '100+', description: 'Aktive Lernende', color: 'python' },
+            { icon: Star, title: '9/10', description: 'Empfehlen unsere Challenges', color: 'rust' },
           ].map((stat, index) => (
             <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-2 border-muted">
               <CardHeader>

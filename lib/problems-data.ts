@@ -19,7 +19,6 @@ export interface Problem {
 }
 
 export const problems: Problem[] = [
-  // ... (existing problems)
 
   {
     id: 1,
