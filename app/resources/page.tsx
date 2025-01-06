@@ -8,6 +8,14 @@ import { Button } from '@/components/ui/button'
 import { ExternalLink, BookOpen, Code, Globe, Video, FileText, Users } from 'lucide-react'
 import Link from 'next/link'
 
+interface Resource {
+  title: string;
+  description: string;
+  url: string;
+  type: string;
+  icon: React.ElementType;
+}
+
 const resources = [
   {
     title: 'MDN Web Docs',
@@ -74,7 +82,7 @@ const resources = [
   },
 ]
 
-function ResourceCard({ resource, index }) {
+function ResourceCard({ resource, index }: { resource: Resource; index: number }) {
   return (
     <motion.div
       key={index}
@@ -113,7 +121,7 @@ function ResourceCard({ resource, index }) {
 }
 
 export default function ResourcesPage() {
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<Error | null>(null)
 
   if (error) {
     return <div>Error: {error.message}</div>

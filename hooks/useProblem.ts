@@ -4,11 +4,17 @@ import { useAuth } from '@/components/AuthContext'
 import { problems } from '@/lib/problems-data'
 import { saveProgress, getProgress } from '@/lib/progressUtils'
 
+interface TestResult {
+  description: string;
+  passed: boolean;
+  error: string | null;
+}
+
 export function useProblem(problemId: string) {
   const router = useRouter()
   const [problem, setProblem] = useState(problems.find(p => p.id === parseInt(problemId)))
   const [code, setCode] = useState(problem?.initialCode || '')
-  const [results, setResults] = useState(null)
+  const [results, setResults] = useState<TestResult[] | null>(null)
   const [showSolution, setShowSolution] = useState(false)
   const [allTestsPassed, setAllTestsPassed] = useState(false)
   const [showCongratulations, setShowCongratulations] = useState(false)
@@ -37,6 +43,8 @@ export function useProblem(problemId: string) {
   }, [user, problem])
 
   const runTests = useCallback(() => {
+    if (!problem) return;
+    
     const testResults = problem.testCases.map((testCase) => {
       try {
         const sandbox = {
@@ -59,11 +67,11 @@ export function useProblem(problemId: string) {
           passed: true,
           error: null
         };
-      } catch (error) {
+      } catch (error: unknown) {
         return {
           description: testCase.description,
           passed: false,
-          error: error.toString()
+          error: error instanceof Error ? error.message : String(error)
         };
       }
     });
@@ -85,6 +93,7 @@ export function useProblem(problemId: string) {
   }, [user, problem]);
 
   const goToNextChallenge = useCallback(() => {
+    if (!problem) return;
     const currentIndex = problems.findIndex(p => p.id === problem.id)
     const nextProblem = problems[currentIndex + 1]
     if (nextProblem) {
@@ -95,6 +104,7 @@ export function useProblem(problemId: string) {
   }, [problem, router]);
 
   const goToPreviousChallenge = useCallback(() => {
+    if (!problem) return;
     const currentIndex = problems.findIndex(p => p.id === problem.id)
     const previousProblem = problems[currentIndex - 1]
     if (previousProblem) {
