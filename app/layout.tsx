@@ -1,3 +1,4 @@
+// layout.tsx
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -9,6 +10,8 @@ import Link from "next/link";
 import "./globals.css";
 import { Code, Github, Linkedin, Twitter } from "lucide-react";
 import dynamic from "next/dynamic";
+import Script from 'next/script'; 
+import FeedbackButton from "@/components/FeedbackButton";
 
 const DynamicErrorBoundary = dynamic(
   () => import("@/components/ErrorBoundary"),
@@ -16,9 +19,9 @@ const DynamicErrorBoundary = dynamic(
 );
 
 export const metadata = {
-  title: "JavaScript Basics",
+  title: "codesprung.dev",
   description:
-    "Learn and practice fundamental JavaScript concepts through interactive coding challenges",
+    "Lerne und praktiziere fundamental JavScript Konzepte durch interaktive Coding Challenges",
 };
 
 export default function RootLayout({
@@ -29,6 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background">
+        {/* Einbinden des Tally.so-Skripts */}
+        <Script
+          src="https://tally.so/widgets/embed.js"
+          strategy="afterInteractive"
+        />
         <Analytics />
         <SpeedInsights />
         <AuthProvider>
@@ -110,6 +118,8 @@ export default function RootLayout({
                     </div>
                   </div>
                 </footer>
+                {/* Feedback Button */}
+                <FeedbackButton /> {/* Füge den FeedbackButton hier hinzu */}
               </div>
             </DynamicErrorBoundary>
           </ThemeProvider>
