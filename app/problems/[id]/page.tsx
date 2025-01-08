@@ -4,20 +4,15 @@ import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, XCircle, Play, ChevronLeft, ChevronRight, Copy } from 'lucide-react'
+import { CheckCircle, XCircle, Play, ChevronLeft, ChevronRight } from 'lucide-react'
 import { problems } from '@/lib/problems-data'
 import { cn } from '@/lib/utils'
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from 'framer-motion'
 import { Confetti } from '@/components/Confetti'
 import { useProblem } from '@/hooks/useProblem'
-import { Congratulations } from '@/components/congratulations'
-
-interface TestResult {
-  passed: boolean;
-  description: string;
-  error?: string;
-}
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 const MonacoEditor = dynamic(() => import('@monaco-editor/react'), { ssr: false })
 
@@ -33,14 +28,6 @@ function CodeBlock({ children }: { children: React.ReactNode }) {
       <code>{children}</code>
     </pre>
   )
-}
-
-function copyToClipboard(text: string) {
-  navigator.clipboard.write([
-    new ClipboardItem({
-      'text/plain': new Blob([text], { type: 'text/plain' }),
-    }),
-  ])
 }
 
 export default function ProblemPage({ params }: { params: { id: string } }) {
@@ -63,23 +50,47 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
     goToPreviousChallenge
   } = useProblem(params.id)
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (problem) {
+      setIsLoading(false);
+    }
+  }, [problem]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-[50vh]">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
   if (!problem) {
-    return <div className="text-center py-10 font-mono">Problem nicht gefunden</div>
+    return (
+      <div className="flex flex-col items-center justify-center h-[50vh] space-y-4">
+        <h2 className="text-2xl font-bold text-center font-mono">Problem nicht gefunden</h2>
+        <p className="text-muted-foreground text-center font-mono">Das angeforderte Problem konnte nicht gefunden werden.</p>
+        <Button asChild>
+          <Link href="/problems">Zurück zur Problemübersicht</Link>
+        </Button>
+      </div>
+    );
   }
 
   const isFirstProblem = problem.id === problems[0].id
   const isLastProblem = problem.id === problems[problems.length - 1].id
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8 p-3 sm:p-4">
+    <div className="max-w-4xl mx-auto space-y-8 p-4">
       {showConfetti && <Confetti />}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-2"
+        className="flex items-center justify-between"
       >
-        <div className="flex items-center space-x-2 w-full sm:w-auto">
+        <div className="flex items-center space-x-2">
           <Button
             onClick={goToPreviousChallenge}
             disabled={isFirstProblem}
@@ -89,15 +100,15 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
               "w-10 h-10 sm:w-8 sm:h-8 p-0 rounded-full custom-button",
               isFirstProblem && "opacity-50 cursor-not-allowed"
             )}
+            aria-label="Vorherige Herausforderung"
           >
             <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
-            <span className="sr-only">Vorherige Herausforderung</span>
           </Button>
-          <h1 className="text-xl sm:text-3xl font-bold font-mono break-words">
+          <h1 className="text-3xl font-bold font-mono">
             {problem.id}. {problem.title}
           </h1>
           {isSolved && (
-            <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+            <CheckCircle className="w-6 h-6 text-green-500" />
           )}
           <Button
             onClick={goToNextChallenge}
@@ -108,12 +119,12 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
               "w-10 h-10 sm:w-8 sm:h-8 p-0 rounded-full custom-button",
               isLastProblem && "opacity-50 cursor-not-allowed"
             )}
+            aria-label="Nächste Herausforderung"
           >
             <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
-            <span className="sr-only">Nächste Herausforderung</span>
           </Button>
         </div>
-        <Badge className={cn("text-tech self-start sm:self-center", difficultyColor[problem.difficulty])}>
+        <Badge className={cn("text-tech", difficultyColor[problem.difficulty])}>
           {problem.difficulty}
         </Badge>
       </motion.div>
@@ -124,11 +135,11 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
         transition={{ duration: 0.5, delay: 0.1 }}
       >
         <Card className="custom-card">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="font-mono text-lg sm:text-xl">Problembeschreibung</CardTitle>
+          <CardHeader>
+            <CardTitle className="font-mono">Problem Description</CardTitle>
           </CardHeader>
-          <CardContent className="p-4 sm:p-6">
-            <p className="font-mono whitespace-pre-wrap text-sm sm:text-base">{problem.description}</p>
+          <CardContent>
+            <p className="font-mono whitespace-pre-wrap">{problem.description}</p>
           </CardContent>
         </Card>
       </motion.div>
@@ -139,16 +150,16 @@ export default function ProblemPage({ params }: { params: { id: string } }) {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <Card className="custom-card">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="font-mono text-lg sm:text-xl">Beispiele</CardTitle>
+          <CardHeader>
+            <CardTitle className="font-mono">Examples</CardTitle>
           </CardHeader>
-          <CardContent className="p-4 sm:p-6">
+          <CardContent>
             {problem.examples.map((example, index) => (
               <div key={index} className="mb-4 last:mb-0">
-                <h3 className="font-semibold font-mono mb-2">Beispiel {index + 1}:</h3>
-                <CodeBlock>{`Eingabe: ${example.input}
-Ausgabe: ${example.output}
-Erläuterung: ${example.explanation}`}</CodeBlock>
+                <h3 className="font-semibold font-mono">Example {index + 1}:</h3>
+                <CodeBlock>{`Input: ${example.input}
+Output: ${example.output}
+Explanation: ${example.explanation}`}</CodeBlock>
               </div>
             ))}
           </CardContent>
@@ -161,20 +172,20 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         <Card className="custom-card">
-          <CardHeader className="p-4 sm:p-6">
-            <CardTitle className="font-mono text-lg sm:text-xl">Dein Code</CardTitle>
+          <CardHeader>
+            <CardTitle className="font-mono">Your Code</CardTitle>
           </CardHeader>
-          <CardContent className="p-4 sm:p-6">
+          <CardContent>
             <div className="rounded-lg overflow-hidden border border-border">
               <MonacoEditor
-                height="300px"
+                height="400px"
                 language="javascript"
                 theme={isDarkMode ? "vs-dark" : "vs-light"}
                 value={code}
-                onChange={(value) => setCode(value || '')}
+                onChange={(value) => setCode(value)}
                 options={{
                   minimap: { enabled: false },
-                  fontSize: 12,
+                  fontSize: 14,
                   lineNumbers: 'on',
                   roundedSelection: false,
                   scrollBeyondLastLine: false,
@@ -197,20 +208,20 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
                 }}
               />
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+            <div className="flex justify-between mt-4">
               <Button 
                 onClick={runTests} 
-                className="custom-button font-mono w-full sm:w-auto min-h-[44px]"
+                className="custom-button font-mono"
               >
                 <Play className="w-4 h-4 mr-2" />
-                Tests Ausführen
+                Run Tests
               </Button>
               <Button 
                 variant="outline" 
                 onClick={() => setShowSolution(!showSolution)}
-                className="custom-button font-mono w-full sm:w-auto min-h-[44px]"
+                className="custom-button font-mono"
               >
-                {showSolution ? 'Lösung Verbergen' : 'Lösung Anzeigen'}
+                {showSolution ? 'Hide Solution' : 'Show Solution'}
               </Button>
             </div>
           </CardContent>
@@ -226,12 +237,12 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
             transition={{ duration: 0.5 }}
           >
             <Card className="custom-card">
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="font-mono text-lg sm:text-xl">Testergebnisse</CardTitle>
+              <CardHeader>
+                <CardTitle className="font-mono">Test Results</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 sm:p-6">
+              <CardContent>
                 <div className="space-y-4">
-                  {(results as TestResult[]).map((result: TestResult, index: number) => (
+                  {results.map((result, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -275,7 +286,7 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
                     className="mt-6"
                   >
                     <Button onClick={goToNextChallenge} className="w-full custom-button font-mono">
-                      Nächste Herausforderung
+                      Next Challenge
                     </Button>
                   </motion.div>
                 )}
@@ -294,44 +305,38 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
             transition={{ duration: 0.5 }}
           >
             <Card className="custom-card">
-              <CardHeader className="p-4 sm:p-6">
-                <CardTitle className="font-mono text-lg sm:text-xl">Lösung</CardTitle>
+              <CardHeader>
+                <CardTitle className="font-mono">Solution</CardTitle>
               </CardHeader>
-              <CardContent className="p-4 sm:p-6 space-y-6">
-                <div className="relative">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="absolute right-2 top-2 h-8"
-                    onClick={() => copyToClipboard(problem.solution)}
-                  >
-                    <Copy className="h-4 w-4 mr-2" />
-                    Kopieren
-                  </Button>
-                  <pre className="rounded-lg overflow-hidden border border-border bg-muted/30 p-4 font-mono text-sm whitespace-pre-wrap">
-                    <code>{problem.solution}</code>
-                  </pre>
-                </div>
-
-                <div className="space-y-4">
+              <CardContent>
+                <CodeBlock>{problem.solution}</CodeBlock>
+                <div className="space-y-4 mt-6">
                   <h3 className="font-semibold font-mono text-lg">Videoerklärung</h3>
-                  <div className="relative w-full pb-[56.25%] rounded-lg overflow-hidden border border-border">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${problem.videoExplanation.split('v=')[1]}`}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="absolute top-0 left-0 w-full h-full"
-                    />
-                  </div>
-                  <a
-                    href={problem.videoExplanation}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-primary hover:underline transition-colors duration-200 font-mono text-sm"
-                  >
-                    Auf YouTube ansehen →
-                  </a>
+                  {problem.videoExplanation ? (
+                    <>
+                      <div className="relative w-full pb-[56.25%] rounded-lg overflow-hidden border border-border">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${problem.videoExplanation.split('v=')[1]}`}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="absolute top-0 left-0 w-full h-full"
+                        />
+                      </div>
+                      <a
+                        href={problem.videoExplanation}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-primary hover:underline transition-colors duration-200 font-mono text-sm"
+                      >
+                        Auf YouTube ansehen →
+                      </a>
+                    </>
+                  ) : (
+                    <div className="bg-muted p-4 rounded-lg text-center">
+                      <p className="text-muted-foreground font-mono">Erklärungsvideo kommt bald</p>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -342,3 +347,4 @@ Erläuterung: ${example.explanation}`}</CodeBlock>
     </div>
   )
 }
+

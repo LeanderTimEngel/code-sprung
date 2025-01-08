@@ -15,7 +15,7 @@ export interface Problem {
     test: string;
     description: string;
   }[];
-  videoExplanation: string;
+  videoExplanation?: string;
 }
 
 export const problems: Problem[] = [

@@ -97,5 +97,5 @@ Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe [LICENSE](LICENSE) f�
 ---
 
 <div align="center">
-  Mit 💻 entwickelt in Deutschland
+  Mit ❤️
 </div>
